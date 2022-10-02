@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// Solving problems using array functions on the rest countries' data.
+
+      var request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all')
+        request.send();
+        request.onload=function(){
+        var countries=JSON.parse(request.response);
+        console.log(countries)
+
+ // 1.Get all the countries from the Asia continent /region using the Filter function
+    
+var data1=countries.filter((element)=>element.continents=="Asia")
+  console.log(data1)
+
+
+
+// 2.Get all the countries with a population of less than 2 lakhs using Filter function
+    var data2=countries.filter((element)=>element.population<200000)
+    console.log(data2)
+
+
+// 3.Print the following details name, capital, flag using forEach function
+countries.forEach(element => {
+console.log(element.name,element.capital,element.flag)
+            });
+    
+// 4.Print the total population of countries using reduce function    
+    
+var data4=countries.reduce((acc,element)=>acc+element.population,0)
+console.log(`${data4} is the total population`) 
+    
+// 5.Print the country which uses US Dollars as currency.    
+    
+var data5=countries.filter((element)=>element.currency="us dollar")
+console.log(data5)
+
+};  
+   </script>
+</body>
+</html>
